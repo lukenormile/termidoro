@@ -8,14 +8,15 @@ function countdown(){
 }
 
 WORK_SETS_DONE=0
+printf "Work sets done: %d\n" "$WORK_SETS_DONE"
 zenity --warning --text="Start working." 2>/dev/null
 
 while true;
 do
-	printf "\r\rWork sets done: %d\n" "$WORK_SETS_DONE"
 	countdown 1500;
 	((WORK_SETS_DONE++));
 	beep 2>/dev/null
+	printf "\r\rWork sets done: %d\n" "$WORK_SETS_DONE"
 	zenity --warning --text="take a break" 2>/dev/null;
 
 	countdown 300;
