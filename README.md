@@ -1,0 +1,4 @@
+# termidoro
+```bash
+./termidoro.sh
+```
