@@ -1,14 +1,21 @@
 #!/bin/bash
+function countdown(){
+	date1=$((`date +%s` + $1));
+	while [ "$date1" -ge `date +%s` ]; do
+		echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%M:%S)\r";
+		sleep 0.1
+	done
+}
+
 WORK_SETS_DONE=0
 zenity --warning --text="Start working." 2>/dev/null
-printf "Work sets done: %d\n" "$WORK_SETS_DONE"
 
 while true; do
-	sleep 1500;
+	printf "\r\rWork sets done: %d\n" "$WORK_SETS_DONE"
+	countdown 1500;
 	((WORK_SETS_DONE++));
 	zenity --warning --text="take a break" 2>/dev/null;
-	printf "Work sets done: %d\n" "$WORK_SETS_DONE"
 
-	sleep 300;
+	countdown 300;
 	zenity --warning --text="back to work son" 2>/dev/null;
 done
